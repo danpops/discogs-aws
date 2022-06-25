@@ -1,5 +1,11 @@
 import { LambdaResponse, LambdaResponseProps } from '../types'
 
+const composeErrorResponse = composeLambaResponse({
+  statusCode: 400,
+  error: true
+})
+const composeSuccessResponse = composeLambaResponse({ statusCode: 200 })
+
 function composeLambaResponse ({
   statusCode,
   error = false
@@ -18,11 +24,5 @@ function composeLambaResponse ({
     }
   }
 }
-
-const composeErrorResponse = composeLambaResponse({
-  statusCode: 400,
-  error: true
-})
-const composeSuccessResponse = composeLambaResponse({ statusCode: 200 })
 
 export { composeErrorResponse, composeSuccessResponse }

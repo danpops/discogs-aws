@@ -1,13 +1,11 @@
-const path = require('path')
+const nodeExternals = require('webpack-node-externals')
 const slsw = require('serverless-webpack')
-const stage = slsw.lib.options.stage
+const path = require('path')
 
 module.exports = {
+  devtool: 'inline-cheap-module-source-map',
   entry: slsw.lib.entries,
-  externals: [{ 'aws-sdk': 'commonjs2 aws-sdk' }],
-  target: 'node',
   mode: slsw.lib.webpack.isLocal ? 'development' : 'production',
-  stats: 'minimal',
   module: {
     rules: [
       {
@@ -26,18 +24,13 @@ module.exports = {
       }
     ]
   },
-  performance: {
-    hints: false
+  node: false,
+  externals: [nodeExternals()],
+  optimization: {
+    minimize: false
   },
   resolve: {
-    extensions: ['.js', '.ts']
+    extensions: ['.ts', '.js']
   },
-  optimization: {
-    minimize: stage === 'prod'
-  },
-  output: {
-    libraryTarget: 'commonjs2',
-    path: path.join(__dirname, '.webpack'),
-    filename: '[name].js'
-  }
+  target: 'node'
 }
