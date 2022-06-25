@@ -22,4 +22,4 @@ async function fetchDiscogsApi ({
 
 const fetchAlbumCollection = asyncPipe(fetchDiscogsApi, formatAlbumCollection)
 
-export { fetchAlbumCollection }
+export { fetchAlbumCollection, fetchDiscogsApi }

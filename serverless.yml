@@ -30,6 +30,15 @@ functions:
           method: get
           cors: true
           private: true
+  dumpCollection:
+    handler: src/dumpCollection.handler
+    timeout: 20
+    events:
+      - http:
+          path: /collection/dump
+          method: post
+          cors: true
+          private: true
 package:
   individually: true
 plugins:

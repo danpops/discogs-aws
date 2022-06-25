@@ -1,3 +1,5 @@
+import { Result, Session, Transaction } from 'neo4j-driver'
+
 export interface DiscogsApiProps {
   limit?: number
   sort?: string
@@ -87,3 +89,13 @@ export interface ResponseBody {
   headers?: object
   data?: object
 }
+
+export type DriverInitResponse = (
+  uri: string,
+  username: string,
+  password: string
+) => Promise<Session>
+
+export type ComposeNeo4jDiscogsTranscation = (records: AlbumCollection) => (tx: Transaction) => Result
+export type TransactionWork<T> = (tx: Transaction) => Promise<T> | T
+export type DumpCollectionToNeo4j = (init: any) => Promise<any>
