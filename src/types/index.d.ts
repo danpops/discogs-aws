@@ -85,4 +85,5 @@ export interface ResponseBody {
   body: string
   statusCode: number
   headers?: object
+  data?: object
 }
