@@ -1,8 +1,8 @@
 import {
   mockDiscogsReleases,
   mockFormattedDiscogsRelease
-} from '../../../__mocks__/data'
-import { formatAlbumCollection } from '../formatter'
+} from './__mocks__/data'
+import { formatAlbumCollection } from '../src/utils/formatter'
 
 describe('formatter unit test', () => {
   describe('formatAlbumCollection', () => {

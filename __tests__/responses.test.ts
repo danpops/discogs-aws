@@ -1,4 +1,4 @@
-import { componseLambdaError, composeLambdaSuccess } from '../responses'
+import { componseLambdaError, composeLambdaSuccess } from '../src/utils/responses'
 
 describe('responses unit test', () => {
   describe('composeLambdaError', () => {

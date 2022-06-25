@@ -30,15 +30,6 @@ functions:
           method: get
           cors: true
           private: true
-  # importRecords:
-  #   handler: src/importRecords.handler
-  #   timeout: 20
-  #   events:
-  #     - http:
-  #         path: /import
-  #         method: post
-  #         cors: true
-  #         private: true
 package:
   individually: true
 plugins:

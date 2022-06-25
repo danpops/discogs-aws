@@ -1,10 +1,10 @@
 import {
   mockDiscogsReleases,
   successfulReleasesResponse
-} from '../../../__mocks__/data'
-import { formatAlbumCollection } from '../formatter'
-import { asyncPipe } from '../pipe'
-import { composeLambdaSuccess } from '../responses'
+} from './__mocks__/data'
+import { formatAlbumCollection } from '../src/utils/formatter'
+import { asyncPipe } from '../src/utils/pipe'
+import { composeLambdaSuccess } from '../src/utils/responses'
 
 describe('asyncPipe unit test', () => {
   it('should format album collection and return in lambda response', async () => {
