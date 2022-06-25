@@ -8,7 +8,7 @@ import {
 export { handler }
 
 async function handler (): Promise<ResponseBody> {
-  const output: ResponseBody = await fetchAlbumCollection({ limit: 100, sort: 'artist' })
+  const output: ResponseBody = await fetchAlbumCollection({ limit: 500, sort: 'artist' })
     .then(composeSuccessResponse)
     .catch(composeErrorResponse)
   return output

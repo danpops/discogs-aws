@@ -70,6 +70,10 @@ export interface FormattedCollection {
   dateAdded: string
   label: string
   image: string
+  format: {
+    name: string
+    type: string[]
+  }
 }
 
 export interface AlbumCollection {

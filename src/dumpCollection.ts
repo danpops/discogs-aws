@@ -18,7 +18,7 @@ async function handler (): Promise<ResponseBody> {
     return composeErrorResponse(neo4j)
   }
 
-  const options = { limit: 400, sort: 'artist' }
+  const options = { limit: 500, sort: 'artist' }
   const output = await dumpDiscogsReleasesToNeo4j(neo4j)(options)
     .then(composeSuccessResponse)
     .catch(composeErrorResponse)

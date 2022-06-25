@@ -410,6 +410,10 @@ export const mockFormattedDiscogsRelease = {
       title: 'The Low End Theory',
       artists: ['A Tribe Called Quest'],
       genres: ['Hip Hop', 'Conscious', 'Jazzy Hip-Hop'],
+      format: {
+        name: 'Vinyl',
+        type: ['LP', '45 RPM']
+      },
       releaseYear: 2022,
       dateAdded: '2022-05-12',
       label: 'Jive',
@@ -420,6 +424,10 @@ export const mockFormattedDiscogsRelease = {
       title: 'The Low End Theory',
       artists: ['A Tribe Called Quest'],
       genres: ['Hip Hop', 'Conscious', 'Jazzy Hip-Hop'],
+      format: {
+        name: 'Vinyl',
+        type: ['LP', 'Album', 'Reissue', 'Remastered']
+      },
       releaseYear: 1996,
       dateAdded: '2022-05-12',
       label: 'Jive',
@@ -430,6 +438,10 @@ export const mockFormattedDiscogsRelease = {
       title: 'We Got It From Here…Thank You 4 Your Service',
       artists: ['A Tribe Called Quest'],
       genres: ['Hip Hop', 'Conscious'],
+      format: {
+        name: 'Vinyl',
+        type: ['LP', 'Album']
+      },
       releaseYear: 2016,
       dateAdded: '2018-03-20',
       label: 'Epic',
@@ -440,6 +452,10 @@ export const mockFormattedDiscogsRelease = {
       title: 'Fernando',
       artists: ['ABBA'],
       genres: ['Rock', 'Pop', 'Pop Rock', 'Disco'],
+      format: {
+        name: 'Vinyl',
+        type: ['7"', 'Single', '45 RPM']
+      },
       releaseYear: 1976,
       dateAdded: '2019-05-11',
       label: 'Atlantic',
@@ -450,6 +466,10 @@ export const mockFormattedDiscogsRelease = {
       title: 'Back In Black',
       artists: ['AC/DC'],
       genres: ['Rock', 'Hard Rock'],
+      format: {
+        name: 'Vinyl',
+        type: ['LP', 'Album', 'Reissue', 'Remastered', 'Stereo']
+      },
       releaseYear: 2003,
       dateAdded: '2020-05-03',
       label: 'Columbia',
@@ -460,6 +480,10 @@ export const mockFormattedDiscogsRelease = {
       title: 'Toys In The Attic',
       artists: ['Aerosmith'],
       genres: ['Rock', 'Blues Rock', 'Hard Rock', 'Classic Rock'],
+      format: {
+        name: 'Vinyl',
+        type: ['LP', 'Album', 'Stereo']
+      },
       releaseYear: 1975,
       dateAdded: '2020-05-03',
       label: 'Columbia',
@@ -470,6 +494,18 @@ export const mockFormattedDiscogsRelease = {
       title: "Let's Stay Together",
       artists: ['Al Green'],
       genres: ['Funk / Soul', 'Soul', 'Funk'],
+      format: {
+        name: 'Vinyl',
+        type: [
+          'LP',
+          'Album',
+          'Club Edition',
+          'Limited Edition',
+          'Numbered',
+          'Reissue',
+          'Repress'
+        ]
+      },
       releaseYear: 2019,
       dateAdded: '2019-05-13',
       label: 'Hi Records',

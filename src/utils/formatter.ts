@@ -23,6 +23,10 @@ function mapAlbumCollection (item: DiscogsReleaseItem): FormattedCollection {
     title: item.basic_information.title,
     artists: item.basic_information.artists.map(artist => artist.name),
     genres: item.basic_information.genres.concat(item.basic_information.styles),
+    format: {
+      name: item.basic_information.formats[0].name,
+      type: item.basic_information.formats[0].descriptions ?? []
+    },
     releaseYear: item.basic_information.year,
     dateAdded,
     label: item.basic_information.labels[0].name,
