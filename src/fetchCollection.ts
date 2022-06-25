@@ -1,10 +1,15 @@
-import { fetchDiscogsUserCollection } from './discogs/api'
-import { DiscogsCollectionFilter, ResponseBody } from './types'
+import { fetchAlbumCollection } from './discogs/api'
+import { ResponseBody } from './types'
+import {
+  composeErrorResponse,
+  composeSuccessResponse
+} from './utils/responses'
 
 export { handler }
 
 async function handler (): Promise<ResponseBody> {
-  const filters: DiscogsCollectionFilter = { limit: 100, sort: 'artist' }
-  const output: ResponseBody = await fetchDiscogsUserCollection(filters)
+  const output: ResponseBody = await fetchAlbumCollection({ limit: 100, sort: 'artist' })
+    .then(composeSuccessResponse)
+    .catch(composeErrorResponse)
   return output
 }

@@ -19,10 +19,10 @@ function composeLambaResponse ({
   }
 }
 
-const componseLambdaError = composeLambaResponse({
+const composeErrorResponse = composeLambaResponse({
   statusCode: 400,
   error: true
 })
-const composeLambdaSuccess = composeLambaResponse({ statusCode: 200 })
+const composeSuccessResponse = composeLambaResponse({ statusCode: 200 })
 
-export { componseLambdaError, composeLambdaSuccess }
+export { composeErrorResponse, composeSuccessResponse }

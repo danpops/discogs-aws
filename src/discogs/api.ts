@@ -1,34 +1,25 @@
 import axios from 'axios'
 import { formatAlbumCollection } from '../utils/formatter'
-import {
-  DiscogsReleaseResponse,
-  DiscogsCollectionFilter,
-  ResponseBody
-} from '../types'
-import { componseLambdaError, composeLambdaSuccess } from '../utils/responses'
+import { DiscogsApiProps, ResponseBody } from '../types'
 import { asyncPipe } from '../utils/pipe'
 import { discogsUrl, discogsUsername, headers } from './headers'
 
-const composeCollectionResponse: (
-  data: DiscogsReleaseResponse
-) => Promise<ResponseBody> = asyncPipe(
-  formatAlbumCollection,
-  composeLambdaSuccess
-)
+const DISCOGS_URL: string = `${discogsUrl}/users/${discogsUsername}/collection/folders/0/releases`
 
-async function fetchDiscogsUserCollection ({
+async function fetchDiscogsApi ({
   limit = 50,
   sort = 'artist'
-}: DiscogsCollectionFilter): Promise<ResponseBody> {
-  const releasesUrl: string = `${discogsUrl}/users/${discogsUsername}/collection/folders/0/releases`
-  const releasesFilter: string = `?per_page=${limit}&page=1&sort=${sort}`
+}: DiscogsApiProps): Promise<ResponseBody> {
+  const filter: string = `?per_page=${limit}&page=1&sort=${sort}`
 
-  const results: ResponseBody = await axios
-    .get(`${releasesUrl}${releasesFilter}`, headers)
-    .then(composeCollectionResponse)
-    .catch(componseLambdaError)
+  const results: ResponseBody = await axios.get(
+    `${DISCOGS_URL}${filter}`,
+    headers
+  )
 
   return results
 }
 
-export { fetchDiscogsUserCollection }
+const fetchAlbumCollection = asyncPipe(fetchDiscogsApi, formatAlbumCollection)
+
+export { fetchAlbumCollection }

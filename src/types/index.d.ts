@@ -1,6 +1,7 @@
-interface DiscogsCollectionFilter {
+export interface DiscogsApiProps {
   limit?: number
   sort?: string
+  discogsUrl?: string
 }
 
 interface DiscogsFormats {
