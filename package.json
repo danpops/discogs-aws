@@ -1,0 +1,30 @@
+{
+  "name": "discogs-to-neo4j",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest",
+    "format": "yarn ts-standard --fix | snazzy"
+  },
+  "devDependencies": {
+    "@types/async-retry": "1.4.4",
+    "@types/aws-lambda": "8.10.101",
+    "@types/axios": "0.14.0",
+    "@types/jest": "28.1.2",
+    "aws-lambda": "1.0.7",
+    "jest": "28.1.1",
+    "serverless": "3.19.0",
+    "serverless-offline": "8.8.0",
+    "serverless-webpack": "5.7.1",
+    "snazzy": "^9.0.0",
+    "ts-jest": "28.0.5",
+    "ts-loader": "9.3.1",
+    "ts-standard": "^11.0.0",
+    "typescript": "4.7.4",
+    "webpack": "5.73.0"
+  },
+  "dependencies": {
+    "async-retry": "1.3.3",
+    "axios": "0.27.2",
+    "neo4j-driver": "4.4.6"
+  }
+}

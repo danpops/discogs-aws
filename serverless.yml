@@ -1,0 +1,51 @@
+service: discogs-to-neo4j
+frameworkVersion: "3"
+provider:
+  name: aws
+  region: us-east-1
+  runtime: nodejs14.x
+  stage: ${opt:stage, 'dev'}
+  profile: personal
+  environment:
+    neo4jUri: ${ssm:NEO4J_URI}
+    neo4jUser: ${ssm:NEO4J_USER}
+    neo4jPassword: ${ssm:NEO4J_PASSWORD}
+    discogsUrl: ${ssm:DISCOGS_URL}
+    discogsApiKey: ${ssm:DISCOGS_API_KEY}
+    discogsUsername: ${ssm:DISCOGS_USERNAME}
+  apiGateway:
+    apiKeys:
+      - discogs-${sls:stage}-apiKey
+    usagePlan:
+      throttle:
+        burstLimit: 200
+        rateLimit: 100
+functions:
+  fetchCollection:
+    handler: src/fetchCollection.handler
+    timeout: 20
+    events:
+      - http:
+          path: /collection
+          method: get
+          cors: true
+          private: true
+  # importRecords:
+  #   handler: src/importRecords.handler
+  #   timeout: 20
+  #   events:
+  #     - http:
+  #         path: /import
+  #         method: post
+  #         cors: true
+  #         private: true
+package:
+  individually: true
+plugins:
+  - serverless-webpack
+  - serverless-offline
+custom:
+  webpack:
+    webpackConfig: "./webpack.config.js"
+    includeModules: false
+    packager: yarn
