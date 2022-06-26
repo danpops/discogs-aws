@@ -1,4 +1,4 @@
-# discogs-neo4j
+# discogs-to-neo4j
 Visualize your vinyl collection in Neo4j! 
 
 ![graph](https://user-images.githubusercontent.com/59669570/175819940-d5860e49-43ed-466f-82a2-bad3c6592f36.png)

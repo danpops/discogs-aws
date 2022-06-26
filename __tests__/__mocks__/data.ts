@@ -524,3 +524,51 @@ export const successfulReleasesResponse = {
     'Access-Control-Allow-Headers': 'Content-Type, x-api-key'
   }
 }
+
+export const mockDiscogsRelaseNoFormatDescriptions = {
+  ...mockDiscogsReleases.data.releases[0],
+  basic_information: {
+    ...mockDiscogsReleases.data.releases[0].basic_information,
+    formats: [
+      {
+        name: 'Vinyl',
+        qty: '1',
+        text: 'Green',
+        descriptions: undefined
+      },
+      {
+        name: 'Vinyl',
+        qty: '1',
+        text: 'Red',
+        descriptions: undefined
+      },
+      {
+        name: 'All Media',
+        qty: '1',
+        text: 'Gatefold',
+        descriptions: undefined
+      }
+    ]
+  }
+}
+
+export const mockDiscogsRelaseNoCoverImage = {
+  ...mockDiscogsReleases.data.releases[0],
+  basic_information: {
+    ...mockDiscogsReleases.data.releases[0].basic_information,
+    cover_image: undefined
+  }
+}
+
+export const mockFormattedReleaseEmptyFormatType = {
+  ...mockFormattedDiscogsRelease.albums[0],
+  format: {
+    name: 'Vinyl',
+    type: []
+  }
+}
+
+export const mockFormattedReleaseNoImage = {
+  ...mockFormattedDiscogsRelease.albums[0],
+  image: ''
+}

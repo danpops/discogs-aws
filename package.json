@@ -1,8 +1,13 @@
 {
   "name": "discogs-to-neo4j",
+  "author": "Daniel Popovic",
+  "description": "A Serverless Lambda REST API that fetches a Discogs user collection and imports the data to a Neo4j database - allowing you to query your Discogs data with GraphQL Apollo Server.",
   "license": "MIT",
   "scripts": {
-    "test": "jest",
+    "dpfn": "sls deploy function -f",
+    "dp": "sls deploy",
+    "local": "sls offline",
+    "test": "yarn jest --verbose --coverage",
     "format": "yarn ts-standard --fix | snazzy"
   },
   "devDependencies": {
@@ -10,26 +15,29 @@
     "@types/aws-lambda": "8.10.101",
     "@types/axios": "0.14.0",
     "@types/jest": "28.1.2",
-    "aws-lambda": "^1.0.7",
-    "graphql": "^16.5.0",
-    "graphql-tag": "^2.12.6",
+    "aws-lambda": "1.0.7",
+    "graphql": "16.5.0",
+    "graphql-tag": "2.12.6",
+    "husky": "8.0.1",
     "jest": "28.1.1",
+    "jest-html-reporter": "^3.5.0",
+    "jest-tap-reporter": "^1.9.0",
     "serverless": "3.19.0",
     "serverless-offline": "8.8.0",
     "serverless-webpack": "5.7.1",
-    "snazzy": "^9.0.0",
+    "snazzy": "9.0.0",
     "ts-jest": "28.0.5",
     "ts-loader": "9.3.1",
-    "ts-standard": "^11.0.0",
+    "ts-standard": "11.0.0",
     "typescript": "4.7.4",
     "webpack": "5.73.0",
-    "webpack-node-externals": "^3.0.0"
+    "webpack-node-externals": "3.0.0"
   },
   "dependencies": {
-    "@neo4j/graphql": "^3.4.0",
-    "apollo-server-lambda": "^3.9.0",
-    "async-retry": "^1.3.3",
-    "axios": "^0.27.2",
-    "neo4j-driver": "^4.4.6"
+    "@neo4j/graphql": "3.4.0",
+    "apollo-server-lambda": "3.9.0",
+    "async-retry": "1.3.3",
+    "axios": "0.27.2",
+    "neo4j-driver": "4.4.6"
   }
 }

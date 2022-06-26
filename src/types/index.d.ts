@@ -10,7 +10,7 @@ interface DiscogsFormats {
   name: string
   qty: string
   text?: string
-  descriptions: string[]
+  descriptions?: string[]
 }
 interface DiscogsLabels {
   name: string
@@ -36,7 +36,7 @@ interface DiscogsReleaseBasicInformation {
   master_url: string
   resource_url: string
   thumb: string
-  cover_image: string
+  cover_image?: string
   title: string
   year: number
   formats: DiscogsFormats[]

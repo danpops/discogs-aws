@@ -34,4 +34,4 @@ function mapAlbumCollection (item: DiscogsReleaseItem): FormattedCollection {
   }
 }
 
-export { formatAlbumCollection }
+export { formatAlbumCollection, mapAlbumCollection }
