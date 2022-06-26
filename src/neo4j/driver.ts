@@ -4,14 +4,11 @@ import { DriverInitResponse } from '../types'
 
 let driver: Driver
 
-export const neo4jDriver = (uri: string, username: string, password: string): Driver =>
-  neo4j.driver(uri, neo4j.auth.basic(username, password))
-
 const initDriver: DriverInitResponse = async (uri, username, password) => {
   // if connection fails, retry 3 times with 5sec timeout.
   const driverConnection = await retry(
     async () => {
-      driver = neo4jDriver(uri, username, password)
+      driver = getDriver(uri, username, password)
       const session: Session = await driver
         .verifyConnectivity()
         .then(getSession)
@@ -28,6 +25,12 @@ const initDriver: DriverInitResponse = async (uri, username, password) => {
   return driverConnection
 }
 
+const getDriver = (
+  uri: string,
+  username: string,
+  password: string
+): Driver => neo4j.driver(uri, neo4j.auth.basic(username, password))
+
 const getSession: () => Session = () => driver.session()
 
-export { initDriver, getSession }
+export { initDriver, getDriver, getSession }
