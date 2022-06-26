@@ -10,7 +10,7 @@ const { neo4jUri = '', neo4jUser = '', neo4jPassword = '' } = process.env
 const neoDriver = getDriver(neo4jUri, neo4jUser, neo4jPassword)
 const neoSchema = new Neo4jGraphQL({ typeDefs, driver: neoDriver })
 
-const initServer = async (): InitGraphQLServer => {
+async function initServer (): InitGraphQLServer {
   const schema = await neoSchema.getSchema()
   const server = new ApolloServer({
     schema,
@@ -20,7 +20,7 @@ const initServer = async (): InitGraphQLServer => {
   return server.createHandler()
 }
 
-export const graphqlHandler: GraphQLLambdaHandler = async (
+const graphqlHandler: GraphQLLambdaHandler = async (
   event,
   context,
   callback
@@ -35,3 +35,5 @@ export const graphqlHandler: GraphQLLambdaHandler = async (
     callback
   )
 }
+
+export { graphqlHandler }
