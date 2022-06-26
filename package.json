@@ -1,7 +1,7 @@
 {
   "name": "discogs-to-neo4j",
   "author": "Daniel Popovic",
-  "description": "A Serverless Lambda REST API that fetches a Discogs user collection and imports the data to a Neo4j database - allowing you to query your Discogs data with GraphQL Apollo Server.",
+  "description": "A Serverless Lambda API to dump Discogs album collection to Neo4j DB",
   "license": "MIT",
   "scripts": {
     "start": "sls offline",
