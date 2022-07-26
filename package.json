@@ -4,12 +4,12 @@
   "description": "A Serverless Lambda API to dump Discogs album collection to Neo4j DB",
   "license": "MIT",
   "scripts": {
-    "start": "sls offline",
+    "dev": "sls offline",
     "deploy:fn": "sls deploy function -f",
     "deploy": "sls deploy",
     "test": "yarn jest",
     "coverage": "yarn jest --coverage",
-    "format": "yarn ts-standard --fix | snazzy"
+    "fix": "yarn ts-standard --fix | snazzy"
   },
   "devDependencies": {
     "@types/async-retry": "1.4.4",
