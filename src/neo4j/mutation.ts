@@ -31,8 +31,7 @@ const composeImportDiscogsCypher: ComposeNeo4jDiscogsTranscation = records => {
         })
       
         MERGE (c:Collection {name: "NowSpinningLPs"})
-        MERGE (y:Year {name: recordItem.releaseYear})
-      
+     
         MERGE (a)-[:IN_COLLECTION {dateAdded: date(recordItem.dateAdded)}]->(c)
       
         FOREACH (i IN range(0, size(recordItem.artists) - 1) |
