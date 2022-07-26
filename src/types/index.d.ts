@@ -1,12 +1,18 @@
 import { Result, Session, Transaction } from 'neo4j-driver'
-import { APIGatewayEvent, APIGatewayProxyCallback, Callback, Context, Handler } from 'aws-lambda'
+import {
+  APIGatewayEvent,
+  APIGatewayProxyCallback,
+  Callback,
+  Context,
+  Handler
+} from 'aws-lambda'
 
 export interface DiscogsApiProps {
   limit?: number
   sort?: string
   discogsUrl?: string
 }
-interface DiscogsFormats {
+export interface DiscogsFormats {
   name: string
   qty: string
   text?: string
@@ -57,18 +63,28 @@ export interface DiscogsReleaseResponse {
     releases: DiscogsReleaseItem[]
   }
 }
+
+export interface FormatInfo {
+  name?: string
+  description?: string[]
+  variant?: string
+}
+
+export interface LabelInfo {
+  name: string
+  catno?: string
+}
 export interface FormattedCollection {
   title: string
   artists: string[]
   genres: string[]
   releaseYear: number
   dateAdded: string
-  label: string
+  label: LabelInfo[]
   image: string
-  format: {
-    name: string
-    type: string[]
-  }
+  styles: string[]
+  variant?: Array<string | undefined>
+  format: FormatInfo[]
 }
 export interface AlbumCollection {
   albums: FormattedCollection[]
@@ -89,10 +105,16 @@ export type DriverInitResponse = (
   username: string,
   password: string
 ) => Promise<Session>
-export type ComposeNeo4jDiscogsTranscation = (records: AlbumCollection) => (tx: Transaction) => Result
+export type ComposeNeo4jDiscogsTranscation = (
+  records: AlbumCollection
+) => (tx: Transaction) => Result
 export type TransactionWork<T> = (tx: Transaction) => Promise<T> | T
 export type DumpCollectionToNeo4j = (init: any) => Promise<any>
-export type GraphQLLambdaHandler = (event: APIGatewayEvent,
+export type GraphQLLambdaHandler = (
+  event: APIGatewayEvent,
   context: Context,
-  callback: APIGatewayProxyCallback) => Promise<(event: any, context: Context, callback: Callback<any>) => Promise<any>>
+  callback: APIGatewayProxyCallback
+) => Promise<
+(event: any, context: Context, callback: Callback<any>) => Promise<any>
+>
 export type InitGraphQLServer = Promise<Handler<any, any>>

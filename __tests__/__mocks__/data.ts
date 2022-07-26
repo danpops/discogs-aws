@@ -409,106 +409,131 @@ export const mockFormattedDiscogsRelease = {
     {
       title: 'The Low End Theory',
       artists: ['A Tribe Called Quest'],
-      genres: ['Hip Hop', 'Conscious', 'Jazzy Hip-Hop'],
-      format: {
-        name: 'Vinyl',
-        type: ['LP', '45 RPM']
-      },
+      genres: ['Hip Hop'],
+      styles: ['Conscious', 'Jazzy Hip-Hop'],
+      format: [
+        { name: 'Vinyl', description: ['LP', '45 RPM'] },
+        { name: 'Vinyl', description: ['LP', '45 RPM'] },
+        {
+          name: 'All Media',
+          description: ['Album', 'Club Edition', 'Reissue', 'Remastered']
+        }
+      ],
+      variant: ['Green', 'Red', 'Gatefold'],
       releaseYear: 2022,
       dateAdded: '2022-05-12',
-      label: 'Jive',
+      label: [
+        { name: 'Jive', catno: '19439937541' },
+        { name: 'Sony Music Commercial Music Group', catno: '19439937541' }
+      ],
       image:
         'https://i.discogs.com/GzqK2KBeI6ihZvI3HsOlSYMVUac87L_rphZWOAl4g68/rs:fit/g:sm/q:90/h:604/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTIzMDM2/MjEwLTE2NTI4NDc4/MDgtMzc3MC5qcGVn.jpeg'
     },
     {
       title: 'The Low End Theory',
       artists: ['A Tribe Called Quest'],
-      genres: ['Hip Hop', 'Conscious', 'Jazzy Hip-Hop'],
-      format: {
-        name: 'Vinyl',
-        type: ['LP', 'Album', 'Reissue', 'Remastered']
-      },
+      genres: ['Hip Hop'],
+      styles: ['Conscious', 'Jazzy Hip-Hop'],
+      format: [
+        {
+          name: 'Vinyl',
+          description: ['LP', 'Album', 'Reissue', 'Remastered']
+        }
+      ],
+      variant: ['B&W Label'],
       releaseYear: 1996,
       dateAdded: '2022-05-12',
-      label: 'Jive',
+      label: [{ name: 'Jive', catno: '01241-41418-1' }],
       image:
         'https://i.discogs.com/DpgfGsnv80b9T_afDjWYiadeeMft7zzTlTrcuyJ41mM/rs:fit/g:sm/q:90/h:590/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM5MDQx/MS0xNDMzMDA1Mzc0/LTMzODkuanBlZw.jpeg'
     },
     {
       title: 'We Got It From Here…Thank You 4 Your Service',
       artists: ['A Tribe Called Quest'],
-      genres: ['Hip Hop', 'Conscious'],
-      format: {
-        name: 'Vinyl',
-        type: ['LP', 'Album']
-      },
+      genres: ['Hip Hop'],
+      styles: ['Conscious'],
+      format: [{ name: 'Vinyl', description: ['LP', 'Album'] }],
+      variant: [''],
       releaseYear: 2016,
       dateAdded: '2018-03-20',
-      label: 'Epic',
+      label: [{ name: 'Epic', catno: '88985377871' }],
       image:
         'https://i.discogs.com/ArQVTaQOvCMKpypy1ioJybVGRbWtmBVlwdANh7iAMMs/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTk0Mzc5/MDItMTQ4MjYwNzcz/NS05NzUzLnBuZw.jpeg'
     },
     {
       title: 'Fernando',
       artists: ['ABBA'],
-      genres: ['Rock', 'Pop', 'Pop Rock', 'Disco'],
-      format: {
-        name: 'Vinyl',
-        type: ['7"', 'Single', '45 RPM']
-      },
+      genres: ['Rock', 'Pop'],
+      styles: ['Pop Rock', 'Disco'],
+      format: [{ name: 'Vinyl', description: ['7"', 'Single', '45 RPM'] }],
+      variant: [''],
       releaseYear: 1976,
       dateAdded: '2019-05-11',
-      label: 'Atlantic',
+      label: [{ name: 'Atlantic', catno: 'AT 3346' }],
       image:
         'https://i.discogs.com/RlDMFQqlp6ELBlWkoWBVfrp4EnjQik2h0Dd0H0ciNGk/rs:fit/g:sm/q:90/h:614/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE3MzM2/MTktMTUzNTEzNzE1/Mi01ODcxLmpwZWc.jpeg'
     },
     {
       title: 'Back In Black',
       artists: ['AC/DC'],
-      genres: ['Rock', 'Hard Rock'],
-      format: {
-        name: 'Vinyl',
-        type: ['LP', 'Album', 'Reissue', 'Remastered', 'Stereo']
-      },
+      genres: ['Rock'],
+      styles: ['Hard Rock'],
+      format: [
+        {
+          name: 'Vinyl',
+          description: ['LP', 'Album', 'Reissue', 'Remastered', 'Stereo']
+        }
+      ],
+      variant: ['180 Gram, Embossed'],
       releaseYear: 2003,
       dateAdded: '2020-05-03',
-      label: 'Columbia',
+      label: [
+        { name: 'Columbia', catno: 'E 80207' },
+        { name: 'Albert Productions', catno: 'E 80207' }
+      ],
       image:
         'https://i.discogs.com/40N9qTI53OsRDHZZVCI-7ccPGyy8JMrlOxIJ3zEn8Qg/rs:fit/g:sm/q:90/h:500/w:500/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE1MTcw/MjgtMTM1MzE3NDQ1/OS0yODYyLmpwZWc.jpeg'
     },
     {
       title: 'Toys In The Attic',
       artists: ['Aerosmith'],
-      genres: ['Rock', 'Blues Rock', 'Hard Rock', 'Classic Rock'],
-      format: {
-        name: 'Vinyl',
-        type: ['LP', 'Album', 'Stereo']
-      },
+      genres: ['Rock'],
+      styles: ['Blues Rock', 'Hard Rock', 'Classic Rock'],
+      format: [{ name: 'Vinyl', description: ['LP', 'Album', 'Stereo'] }],
+      variant: [''],
       releaseYear: 1975,
       dateAdded: '2020-05-03',
-      label: 'Columbia',
+      label: [{ name: 'Columbia', catno: 'PC 33479' }],
       image:
         'https://i.discogs.com/Q4HDXadYfuEf3oTks-sh4qku6A5SpXOatmW2LWquC50/rs:fit/g:sm/q:90/h:597/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ4ODA1/MDgtMTM3ODMxMDIy/OS00NTYxLmpwZWc.jpeg'
     },
     {
       title: "Let's Stay Together",
       artists: ['Al Green'],
-      genres: ['Funk / Soul', 'Soul', 'Funk'],
-      format: {
-        name: 'Vinyl',
-        type: [
-          'LP',
-          'Album',
-          'Club Edition',
-          'Limited Edition',
-          'Numbered',
-          'Reissue',
-          'Repress'
-        ]
-      },
+      genres: ['Funk / Soul'],
+      styles: ['Soul', 'Funk'],
+      format: [
+        {
+          name: 'Vinyl',
+          description: [
+            'LP',
+            'Album',
+            'Club Edition',
+            'Limited Edition',
+            'Numbered',
+            'Reissue',
+            'Repress'
+          ]
+        }
+      ],
+      variant: ['Green Translucent'],
       releaseYear: 2019,
       dateAdded: '2019-05-13',
-      label: 'Hi Records',
+      label: [
+        { name: 'Hi Records', catno: 'FPH1137-6-VPM' },
+        { name: 'Fat Possum Records', catno: 'FPH1137-1' },
+        { name: 'Fat Possum Records', catno: 'FPH1137-6-VPM' }
+      ],
       image:
         'https://i.discogs.com/LjSsUyo17GmabDvK4BZFXSK_2_AmIer_3NtcFA81JKA/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEzNjE1/NDA2LTE1NTgwMTEw/MDgtMzk3NS5qcGVn.jpeg'
     }
@@ -562,10 +587,20 @@ export const mockDiscogsRelaseNoCoverImage = {
 
 export const mockFormattedReleaseEmptyFormatType = {
   ...mockFormattedDiscogsRelease.albums[0],
-  format: {
-    name: 'Vinyl',
-    type: []
-  }
+  format: [
+    {
+      name: 'Vinyl',
+      description: []
+    },
+    {
+      name: 'Vinyl',
+      description: []
+    },
+    {
+      name: 'All Media',
+      description: []
+    }
+  ]
 }
 
 export const mockFormattedReleaseNoImage = {

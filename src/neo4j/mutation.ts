@@ -1,7 +1,11 @@
 import { Session, Transaction } from 'neo4j-driver'
 import { fetchDiscogsApi } from '../discogs/api'
-import { ComposeNeo4jDiscogsTranscation, DumpCollectionToNeo4j, TransactionWork } from '../types'
-import { formatAlbumCollection } from '../utils/formatter'
+import {
+  ComposeNeo4jDiscogsTranscation,
+  DumpCollectionToNeo4j,
+  TransactionWork
+} from '../types'
+import { formatAlbumCollection, handleError } from '../utils/formatter'
 import { asyncPipe } from '../utils/pipe'
 
 function dumpDiscogsReleasesToNeo4j (session: Session): DumpCollectionToNeo4j {
@@ -13,9 +17,10 @@ function dumpDiscogsReleasesToNeo4j (session: Session): DumpCollectionToNeo4j {
   )
 }
 
-const composeSuccessTransaction = (): string => 'Successfully imported data to Neo4j!'
+const composeSuccessTransaction = (): string =>
+  'Successfully imported data to Neo4j!'
 
-const composeImportDiscogsCypher: ComposeNeo4jDiscogsTranscation = (records) => {
+const composeImportDiscogsCypher: ComposeNeo4jDiscogsTranscation = records => {
   return (tx: Transaction) =>
     tx.run(
       `
@@ -26,9 +31,7 @@ const composeImportDiscogsCypher: ComposeNeo4jDiscogsTranscation = (records) => 
         })
       
         MERGE (c:Collection {name: "NowSpinningLPs"})
-        MERGE (l:Label {name: recordItem.label})
         MERGE (y:Year {name: recordItem.releaseYear})
-        MERGE (f:Format {name: recordItem.format.name})
       
         MERGE (a)-[:IN_COLLECTION {dateAdded: date(recordItem.dateAdded)}]->(c)
       
@@ -42,15 +45,32 @@ const composeImportDiscogsCypher: ComposeNeo4jDiscogsTranscation = (records) => 
           MERGE (a)-[:HAS_GENRE]->(g)
         )
 
-        FOREACH (i IN range(0, size(recordItem.format.type) - 1) |
-          MERGE (d:Description {name: recordItem.format.type[i]})
-          MERGE (a)-[:HAS_DESCRIPTION]->(d)
+        FOREACH (i IN range(0, size(recordItem.styles) - 1) |
+          MERGE (s:Style {name: recordItem.styles[i]})
+          MERGE (a)-[:HAS_STYLE]->(s)
+        )
+
+        FOREACH (i IN range(0, size(recordItem.format) - 1) |
+          MERGE (f:Format {name: recordItem.format[i].name})
+          MERGE (a)-[:HAS_FORMAT]->(f)
+        
+          FOREACH (j IN range(0, size(recordItem.format[i].description) - 1) |
+            MERGE (d:Description {name: recordItem.format[i].description[j]})
+            MERGE (a)-[:HAS_DESCRIPTION]->(d)
+          )
         )
       
-        MERGE (a)-[:ON_LABEL]->(l)
-        MERGE (a)-[:HAS_FORMAT]->(f)
-      
-        MERGE (a)-[:PRESSED_IN]->(y)
+        FOREACH (i IN range(0, size(recordItem.variant) - 1) |
+          MERGE (v:Variant {name: recordItem.variant[i]})
+          MERGE (a)-[:PRESSED_ON]->(v)
+        )
+
+        FOREACH (i IN range(0, size(recordItem.label) - 1) |
+          MERGE (l:Label {name: recordItem.label[i].name})
+          MERGE (a)-[:ON_LABEL { catno: recordItem.label[i].catno }]->(l)
+        )
+
+        MERGE (a)-[:HAS_FORMAT {pressedIn: recordItem.releaseYear}]->(f)
       
         RETURN COLLECT(a) as album`,
       {
@@ -64,10 +84,7 @@ function mutateNeo4j (session: Session) {
     const results = await session
       .writeTransaction(cypherTransaction)
       .then(composeSuccessTransaction)
-      .catch((error) => {
-        console.log(error)
-        return error
-      })
+      .catch(handleError)
 
     await session.close()
 
